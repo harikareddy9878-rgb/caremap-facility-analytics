@@ -1,0 +1,474 @@
+{
+  "displayFieldName": "Districts",
+  "fieldAliases": {
+    "OBJECTID": "OBJECTID",
+    "Sl_no": "Sl_no",
+    "Districts": "Districts",
+    "Lat": "Lat",
+    "Long_": "Long_"
+  },
+  "geometryType": "esriGeometryPoint",
+  "spatialReference": {
+    "wkid": 4326,
+    "latestWkid": 4326
+  },
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID"
+    },
+    {
+      "name": "Sl_no",
+      "type": "esriFieldTypeDouble",
+      "alias": "Sl_no"
+    },
+    {
+      "name": "Districts",
+      "type": "esriFieldTypeString",
+      "alias": "Districts",
+      "length": 255
+    },
+    {
+      "name": "Lat",
+      "type": "esriFieldTypeDouble",
+      "alias": "Lat"
+    },
+    {
+      "name": "Long_",
+      "type": "esriFieldTypeDouble",
+      "alias": "Long_"
+    }
+  ],
+  "features": [
+    {
+      "attributes": {
+        "OBJECTID": 1,
+        "Sl_no": 1,
+        "Districts": "CMS Medak ",
+        "Lat": 18.0497983986671,
+        "Long_": 78.2728768381912
+      },
+      "geometry": {
+        "x": 78.2728768380375,
+        "y": 18.049798398988397
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 2,
+        "Sl_no": 2,
+        "Districts": "CMS Mahabubnagar",
+        "Lat": 17.5800552690961,
+        "Long_": 79.9849671576723
+      },
+      "geometry": {
+        "x": 77.99097232426064,
+        "y": 16.74772100241578
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3,
+        "Sl_no": 3,
+        "Districts": "CMS Badradi Kothagudem",
+        "Lat": 17.5150909447912,
+        "Long_": 80.6374037535234
+      },
+      "geometry": {
+        "x": 80.63740375441073,
+        "y": 17.515090944724314
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4,
+        "Sl_no": 4,
+        "Districts": "CMS Nalgonda",
+        "Lat": 17.055995037748,
+        "Long_": 79.2794483381683
+      },
+      "geometry": {
+        "x": 79.2794483378971,
+        "y": 17.055995038296974
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 5,
+        "Sl_no": 5,
+        "Districts": "CMS Sangareddy",
+        "Lat": 17.6260807738078,
+        "Long_": 78.0790059093451
+      },
+      "geometry": {
+        "x": 78.07900590915273,
+        "y": 17.626080774097463
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 6,
+        "Sl_no": 6,
+        "Districts": "CMS Siddipet",
+        "Lat": 18.0954804594285,
+        "Long_": 78.8230275423276
+      },
+      "geometry": {
+        "x": 78.82302754218867,
+        "y": 18.095480459377914
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 7,
+        "Sl_no": 7,
+        "Districts": "CMS Peddapalli",
+        "Lat": 18.5197792781587,
+        "Long_": 79.3225156288361
+      },
+      "geometry": {
+        "x": 79.32251562941121,
+        "y": 18.519779278107404
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 8,
+        "Sl_no": 8,
+        "Districts": "CMS Mahabubabad",
+        "Lat": 17.5802824134108,
+        "Long_": 79.9849776958526
+      },
+      "geometry": {
+        "x": 79.98497769587684,
+        "y": 17.580282412957448
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 9,
+        "Sl_no": 9,
+        "Districts": "CMS Nagarkurnool",
+        "Lat": 16.5208365894419,
+        "Long_": 78.2424187423276
+      },
+      "geometry": {
+        "x": 78.24241874173501,
+        "y": 16.520836588915813
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 10,
+        "Sl_no": 10,
+        "Districts": "CMS Rajanna sircilla",
+        "Lat": 18.457667365564,
+        "Long_": 78.8665683576723
+      },
+      "geometry": {
+        "x": 78.86656835838022,
+        "y": 18.45766736625682
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 11,
+        "Sl_no": 11,
+        "Districts": "CMS Wanaparthy",
+        "Lat": 16.3388500476942,
+        "Long_": 78.0405625381526
+      },
+      "geometry": {
+        "x": 78.04056253778315,
+        "y": 16.338850048017072
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 12,
+        "Sl_no": 12,
+        "Districts": "CMS Jangaon",
+        "Lat": 17.7251914810042,
+        "Long_": 79.1503903958559
+      },
+      "geometry": {
+        "x": 79.15039039589561,
+        "y": 17.725191481220573
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 13,
+        "Sl_no": 13,
+        "Districts": "CMS Hanmakonda",
+        "Lat": 18.022434,
+        "Long_": 79.548391
+      },
+      "geometry": {
+        "x": 79.54839100037391,
+        "y": 18.022434000123894
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 14,
+        "Sl_no": 14,
+        "Districts": "CMS Yadadri bhonagiri",
+        "Lat": 17.5122632993523,
+        "Long_": 78.8837676093425
+      },
+      "geometry": {
+        "x": 78.88376760871984,
+        "y": 17.512263298858926
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 15,
+        "Sl_no": 15,
+        "Districts": "CMS Nirmal",
+        "Lat": 19.0871892663532,
+        "Long_": 78.3620502711638
+      },
+      "geometry": {
+        "x": 78.36205027092686,
+        "y": 19.08718926556229
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 16,
+        "Sl_no": 16,
+        "Districts": "CMS Hyderabad",
+        "Lat": 17.3990148215983,
+        "Long_": 78.4436398012727
+      },
+      "geometry": {
+        "x": 78.44363980074124,
+        "y": 17.39901482225948
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 17,
+        "Sl_no": 17,
+        "Districts": "CMS Jagitiyal",
+        "Lat": 18.782342408798,
+        "Long_": 78.9113516670451
+      },
+      "geometry": {
+        "x": 78.91135166716174,
+        "y": 18.782342408795202
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 18,
+        "Sl_no": 18,
+        "Districts": "CMS Gadwal",
+        "Lat": 16.217251,
+        "Long_": 77.783709
+      },
+      "geometry": {
+        "x": 77.78370900027294,
+        "y": 16.21725100019311
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 19,
+        "Sl_no": 19,
+        "Districts": "CMS Nizamabad",
+        "Lat": 18.7000679756877,
+        "Long_": 78.1184398247154
+      },
+      "geometry": {
+        "x": 78.11843982517266,
+        "y": 18.70006797641427
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 20,
+        "Sl_no": 20,
+        "Districts": "CMS Narayanpet",
+        "Lat": 16.7081892761996,
+        "Long_": 77.5580360846552
+      },
+      "geometry": {
+        "x": 77.55803608477375,
+        "y": 16.7081892761453
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 21,
+        "Sl_no": 21,
+        "Districts": "CMS Karimnagar",
+        "Lat": 18.4301570859443,
+        "Long_": 79.1288852247088
+      },
+      "geometry": {
+        "x": 79.12888522523284,
+        "y": 18.43015708557597
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 22,
+        "Sl_no": 22,
+        "Districts": "CMS Medchal malkajgiri",
+        "Lat": 17.522000012825,
+        "Long_": 78.6594130670151
+      },
+      "geometry": {
+        "x": 78.65941306743025,
+        "y": 17.52200001256962
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 23,
+        "Sl_no": 23,
+        "Districts": "CMS Suryapet",
+        "Lat": 17.1402121715276,
+        "Long_": 79.6067597823511
+      },
+      "geometry": {
+        "x": 79.60675978202238,
+        "y": 17.140212171878346
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 24,
+        "Sl_no": 24,
+        "Districts": "CMS Komarambheem asifabad",
+        "Lat": 19.3617072826162,
+        "Long_": 79.2727831029378
+      },
+      "geometry": {
+        "x": 79.2727831032412,
+        "y": 19.36170728288886
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 25,
+        "Sl_no": 25,
+        "Districts": "CMS Rangareddy",
+        "Lat": 17.329063232501,
+        "Long_": 78.4277345576723
+      },
+      "geometry": {
+        "x": 78.42773455783714,
+        "y": 17.32906323264761
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 26,
+        "Sl_no": 26,
+        "Districts": "CMS Mulugu",
+        "Lat": 18.1896667478631,
+        "Long_": 79.9217546093584
+      },
+      "geometry": {
+        "x": 79.92175460858643,
+        "y": 18.189666747910632
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 27,
+        "Sl_no": 27,
+        "Districts": "CMS Jayashankar bhupalpally",
+        "Lat": 18.4139346029734,
+        "Long_": 79.851704355819
+      },
+      "geometry": {
+        "x": 79.85170435585943,
+        "y": 18.413934602927867
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 28,
+        "Sl_no": 28,
+        "Districts": "CMS Mancherial",
+        "Lat": 18.85524199618,
+        "Long_": 79.4392345670469
+      },
+      "geometry": {
+        "x": 79.4392345666627,
+        "y": 18.855241996340798
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 29,
+        "Sl_no": 29,
+        "Districts": "CMS Adilabad",
+        "Lat": 19.6626084112629,
+        "Long_": 78.5282106382311
+      },
+      "geometry": {
+        "x": 78.52821063772409,
+        "y": 19.66260841055508
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 30,
+        "Sl_no": 30,
+        "Districts": "CMS Warangal (new)",
+        "Lat": 17.9528398025467,
+        "Long_": 79.5941974400422
+      },
+      "geometry": {
+        "x": 79.59419744001303,
+        "y": 17.95283980290353
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 31,
+        "Sl_no": 31,
+        "Districts": "CMS Vikarabad",
+        "Lat": 17.3310418635669,
+        "Long_": 77.88817
+      },
+      "geometry": {
+        "x": 77.88816999974334,
+        "y": 17.331041863655145
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 32,
+        "Sl_no": 32,
+        "Districts": "CMS Kamareddy",
+        "Lat": 18.3295034734519,
+        "Long_": 78.3198958247064
+      },
+      "geometry": {
+        "x": 78.31989582519986,
+        "y": 18.329503473348392
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 33,
+        "Sl_no": 33,
+        "Districts": "CMS Khammam",
+        "Lat": 17.2516341145072,
+        "Long_": 80.1514678381727
+      },
+      "geometry": {
+        "x": 80.15146783768058,
+        "y": 17.25163411494511
+      }
+    }
+  ]
+}

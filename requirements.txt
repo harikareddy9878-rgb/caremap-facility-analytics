@@ -1,0 +1,5 @@
+matplotlib==3.10.7
+reportlab==4.5.0
+pytest==8.4.2
+ruff==0.12.11
+certifi==2025.8.3

@@ -1,0 +1,15 @@
+Total Facilities = COUNTROWS('Facilities')
+
+District Count = DISTINCTCOUNT('Facilities'[district])
+
+Mapped Facilities =
+CALCULATE(
+    [Total Facilities],
+    NOT ISBLANK('Facilities'[latitude]),
+    NOT ISBLANK('Facilities'[longitude])
+)
+
+Mapped Percentage = DIVIDE([Mapped Facilities], [Total Facilities], 0)
+
+Average Completeness = AVERAGE('Facilities'[record_completeness_pct])
+

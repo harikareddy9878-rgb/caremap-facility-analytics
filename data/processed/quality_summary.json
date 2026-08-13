@@ -1,0 +1,107 @@
+{
+  "raw_records": 2648,
+  "clean_records": 2628,
+  "duplicates_removed": 20,
+  "districts": 33,
+  "mapped_records": 2628,
+  "mapped_records_pct": 100.0,
+  "records_at_least_83_pct_complete": 2595,
+  "top_districts": [
+    [
+      "Hyderabad",
+      275
+    ],
+    [
+      "Bhadradri Kothagudem",
+      246
+    ],
+    [
+      "Medchal\u2013Malkajgiri",
+      185
+    ],
+    [
+      "Kamareddy",
+      179
+    ],
+    [
+      "Jagtial",
+      168
+    ],
+    [
+      "Ranga Reddy",
+      155
+    ],
+    [
+      "Adilabad",
+      146
+    ],
+    [
+      "Jangoan",
+      119
+    ]
+  ],
+  "facility_types": [
+    [
+      "Sub Centre",
+      983
+    ],
+    [
+      "Primary Health Centre",
+      642
+    ],
+    [
+      "Basti Dawakhana",
+      462
+    ],
+    [
+      "Urban Primary Health Centre",
+      289
+    ],
+    [
+      "Community Health Centre",
+      85
+    ],
+    [
+      "Area Hospital",
+      73
+    ],
+    [
+      "Teaching Hospital",
+      47
+    ],
+    [
+      "Central Medical Stores",
+      33
+    ],
+    [
+      "Urban Community Health Centre",
+      7
+    ],
+    [
+      "Civil Dispensary",
+      4
+    ],
+    [
+      "District Hospital",
+      2
+    ],
+    [
+      "Maternity Community Health Centre",
+      1
+    ]
+  ],
+  "source_layer_counts": {
+    "Central Medical Stores": 33,
+    "Medical Colleges": 47,
+    "District Hospital": 2,
+    "Area Hospital": 73,
+    "Civil Dispensary": 4,
+    "Maternity Community Health Centre": 1,
+    "Basti Dawakhana": 462,
+    "Urban Community Health Centre": 7,
+    "Urban Primary Health Centre": 292,
+    "Community Health Centre": 85,
+    "Primary Health Centre": 642,
+    "Health Sub Centre": 1000
+  }
+}

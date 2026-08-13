@@ -1,0 +1,20 @@
+{
+  "source": "https://tgrac.telangana.gov.in/arcgis/rest/services/GovtHospitals_Folder/Health_Facilities_Mapping/MapServer",
+  "publisher": "Telangana Remote Sensing Applications Centre",
+  "retrieved_utc": "2026-08-13T20:36:31.931886+00:00",
+  "layer_ids": [
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "license_note": "Use is subject to the publisher's terms and source availability."
+}

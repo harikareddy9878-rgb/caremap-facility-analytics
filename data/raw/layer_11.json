@@ -1,0 +1,447 @@
+{
+  "displayFieldName": "Facility_Name",
+  "fieldAliases": {
+    "OBJECTID": "OBJECTID",
+    "Sl_No": "Sl_No",
+    "State": "State",
+    "Constituency": "Constituency",
+    "District": "District",
+    "Mandal": "Mandal",
+    "Muncipality": "Muncipality",
+    "GHMC_HUA_Non_Metro": "GHMC_HUA_Non_Metro",
+    "Facility_Name": "Facility_Name",
+    "Facility_Type": "Facility_Type",
+    "NIN_ID": "NIN_ID",
+    "Latitude": "Latitude",
+    "Longitude": "Longitude",
+    "Address": "Address",
+    "Pincode": "Pincode",
+    "District_1": "District_1",
+    "Mandal_1": "Mandal_1",
+    "Village": "Village",
+    "Parliament": "Parliament",
+    "Assembly": "Assembly",
+    "Class": "Class",
+    "ULB": "ULB",
+    "ULB_Mandal": "ULB_Mandal",
+    "Mandal2": "Mandal2",
+    "District2": "District2",
+    "Services": "Services",
+    "Department": "Department",
+    "HoD": "HoD",
+    "Vehicle_Number": "Vehicle_Number",
+    "Base_Location": "Base_Location",
+    "Segment": "Segment",
+    "Vehicle_contact_Num": "Vehicle_contact_Num",
+    "Area": "Area",
+    "Category": "Category",
+    "DMV_Code": "DMV_Code",
+    "vlgcd11": "vlgcd11",
+    "Remarks": "Remarks"
+  },
+  "geometryType": "esriGeometryPoint",
+  "spatialReference": {
+    "wkid": 4326,
+    "latestWkid": 4326
+  },
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID"
+    },
+    {
+      "name": "Sl_No",
+      "type": "esriFieldTypeDouble",
+      "alias": "Sl_No"
+    },
+    {
+      "name": "State",
+      "type": "esriFieldTypeString",
+      "alias": "State",
+      "length": 255
+    },
+    {
+      "name": "Constituency",
+      "type": "esriFieldTypeString",
+      "alias": "Constituency",
+      "length": 255
+    },
+    {
+      "name": "District",
+      "type": "esriFieldTypeString",
+      "alias": "District",
+      "length": 255
+    },
+    {
+      "name": "Mandal",
+      "type": "esriFieldTypeString",
+      "alias": "Mandal",
+      "length": 255
+    },
+    {
+      "name": "Muncipality",
+      "type": "esriFieldTypeString",
+      "alias": "Muncipality",
+      "length": 255
+    },
+    {
+      "name": "GHMC_HUA_Non_Metro",
+      "type": "esriFieldTypeString",
+      "alias": "GHMC_HUA_Non_Metro",
+      "length": 255
+    },
+    {
+      "name": "Facility_Name",
+      "type": "esriFieldTypeString",
+      "alias": "Facility_Name",
+      "length": 255
+    },
+    {
+      "name": "Facility_Type",
+      "type": "esriFieldTypeString",
+      "alias": "Facility_Type",
+      "length": 255
+    },
+    {
+      "name": "NIN_ID",
+      "type": "esriFieldTypeDouble",
+      "alias": "NIN_ID"
+    },
+    {
+      "name": "Latitude",
+      "type": "esriFieldTypeDouble",
+      "alias": "Latitude"
+    },
+    {
+      "name": "Longitude",
+      "type": "esriFieldTypeDouble",
+      "alias": "Longitude"
+    },
+    {
+      "name": "Address",
+      "type": "esriFieldTypeString",
+      "alias": "Address",
+      "length": 255
+    },
+    {
+      "name": "Pincode",
+      "type": "esriFieldTypeString",
+      "alias": "Pincode",
+      "length": 255
+    },
+    {
+      "name": "District_1",
+      "type": "esriFieldTypeString",
+      "alias": "District_1",
+      "length": 254
+    },
+    {
+      "name": "Mandal_1",
+      "type": "esriFieldTypeString",
+      "alias": "Mandal_1",
+      "length": 50
+    },
+    {
+      "name": "Village",
+      "type": "esriFieldTypeString",
+      "alias": "Village",
+      "length": 50
+    },
+    {
+      "name": "Parliament",
+      "type": "esriFieldTypeString",
+      "alias": "Parliament",
+      "length": 50
+    },
+    {
+      "name": "Assembly",
+      "type": "esriFieldTypeString",
+      "alias": "Assembly",
+      "length": 50
+    },
+    {
+      "name": "Class",
+      "type": "esriFieldTypeString",
+      "alias": "Class",
+      "length": 50
+    },
+    {
+      "name": "ULB",
+      "type": "esriFieldTypeString",
+      "alias": "ULB",
+      "length": 50
+    },
+    {
+      "name": "ULB_Mandal",
+      "type": "esriFieldTypeString",
+      "alias": "ULB_Mandal",
+      "length": 100
+    },
+    {
+      "name": "Mandal2",
+      "type": "esriFieldTypeString",
+      "alias": "Mandal2",
+      "length": 50
+    },
+    {
+      "name": "District2",
+      "type": "esriFieldTypeString",
+      "alias": "District2",
+      "length": 50
+    },
+    {
+      "name": "Services",
+      "type": "esriFieldTypeString",
+      "alias": "Services",
+      "length": 50
+    },
+    {
+      "name": "Department",
+      "type": "esriFieldTypeString",
+      "alias": "Department",
+      "length": 50
+    },
+    {
+      "name": "HoD",
+      "type": "esriFieldTypeString",
+      "alias": "HoD",
+      "length": 255
+    },
+    {
+      "name": "Vehicle_Number",
+      "type": "esriFieldTypeString",
+      "alias": "Vehicle_Number",
+      "length": 255
+    },
+    {
+      "name": "Base_Location",
+      "type": "esriFieldTypeString",
+      "alias": "Base_Location",
+      "length": 255
+    },
+    {
+      "name": "Segment",
+      "type": "esriFieldTypeString",
+      "alias": "Segment",
+      "length": 255
+    },
+    {
+      "name": "Vehicle_contact_Num",
+      "type": "esriFieldTypeDouble",
+      "alias": "Vehicle_contact_Num"
+    },
+    {
+      "name": "Area",
+      "type": "esriFieldTypeString",
+      "alias": "Area",
+      "length": 255
+    },
+    {
+      "name": "Category",
+      "type": "esriFieldTypeString",
+      "alias": "Category",
+      "length": 50
+    },
+    {
+      "name": "DMV_Code",
+      "type": "esriFieldTypeString",
+      "alias": "DMV_Code",
+      "length": 50
+    },
+    {
+      "name": "vlgcd11",
+      "type": "esriFieldTypeString",
+      "alias": "vlgcd11",
+      "length": 20
+    },
+    {
+      "name": "Remarks",
+      "type": "esriFieldTypeString",
+      "alias": "Remarks",
+      "length": 50
+    }
+  ],
+  "features": [
+    {
+      "attributes": {
+        "OBJECTID": 1,
+        "Sl_No": 15,
+        "State": null,
+        "Constituency": null,
+        "District": "Hyderabad",
+        "Mandal": "Nampally",
+        "Muncipality": null,
+        "GHMC_HUA_Non_Metro": null,
+        "Facility_Name": "CD High Court",
+        "Facility_Type": "Civil Dispensary",
+        "NIN_ID": null,
+        "Latitude": 17.369844,
+        "Longitude": 78.473343,
+        "Address": null,
+        "Pincode": null,
+        "District_1": "Hyderabad",
+        "Mandal_1": null,
+        "Village": "Nampally",
+        "Parliament": "HYDERABAD",
+        "Assembly": "Khairatabad,Nampally,Goshamahal",
+        "Class": "Municipal Corporation",
+        "ULB": "GHMC",
+        "ULB_Mandal": "GHMC Municipal Corporation",
+        "Mandal2": null,
+        "District2": "HYDERABAD",
+        "Services": null,
+        "Department": "TVVP",
+        "HoD": "TVVP",
+        "Vehicle_Number": null,
+        "Base_Location": null,
+        "Segment": null,
+        "Vehicle_contact_Num": null,
+        "Area": null,
+        "Category": null,
+        "DMV_Code": null,
+        "vlgcd11": null,
+        "Remarks": null
+      },
+      "geometry": {
+        "x": 78.47334300001636,
+        "y": 17.369844000302987
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 2,
+        "Sl_No": 21,
+        "State": null,
+        "Constituency": null,
+        "District": "Hyderabad",
+        "Mandal": "Himayatnagar",
+        "Muncipality": null,
+        "GHMC_HUA_Non_Metro": null,
+        "Facility_Name": "CD Secretariat",
+        "Facility_Type": "Civil Dispensary",
+        "NIN_ID": null,
+        "Latitude": 17.407705,
+        "Longitude": 78.473877,
+        "Address": null,
+        "Pincode": null,
+        "District_1": "Hyderabad",
+        "Mandal_1": null,
+        "Village": "Himayatnagar",
+        "Parliament": "SECUNDERABAD",
+        "Assembly": "Musheerabad,Amberpet,Khairatabad",
+        "Class": "Municipal Corporation",
+        "ULB": "GHMC",
+        "ULB_Mandal": "GHMC Municipal Corporation",
+        "Mandal2": null,
+        "District2": "HYDERABAD",
+        "Services": null,
+        "Department": "TVVP",
+        "HoD": "TVVP",
+        "Vehicle_Number": null,
+        "Base_Location": null,
+        "Segment": null,
+        "Vehicle_contact_Num": null,
+        "Area": null,
+        "Category": null,
+        "DMV_Code": null,
+        "vlgcd11": null,
+        "Remarks": null
+      },
+      "geometry": {
+        "x": 78.47387700002872,
+        "y": 17.407704999606416
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3,
+        "Sl_No": 34,
+        "State": null,
+        "Constituency": null,
+        "District": "Hyderabad",
+        "Mandal": "Himayatnagar",
+        "Muncipality": null,
+        "GHMC_HUA_Non_Metro": null,
+        "Facility_Name": "CD Old MLA Quarters",
+        "Facility_Type": "Civil Dispensary",
+        "NIN_ID": null,
+        "Latitude": 17.397735,
+        "Longitude": 78.482721,
+        "Address": null,
+        "Pincode": null,
+        "District_1": "Hyderabad",
+        "Mandal_1": null,
+        "Village": "Himayatnagar",
+        "Parliament": "SECUNDERABAD",
+        "Assembly": "Musheerabad,Amberpet,Khairatabad",
+        "Class": "Municipal Corporation",
+        "ULB": "GHMC",
+        "ULB_Mandal": "GHMC Municipal Corporation",
+        "Mandal2": null,
+        "District2": "HYDERABAD",
+        "Services": null,
+        "Department": "TVVP",
+        "HoD": "TVVP",
+        "Vehicle_Number": null,
+        "Base_Location": null,
+        "Segment": null,
+        "Vehicle_contact_Num": null,
+        "Area": null,
+        "Category": null,
+        "DMV_Code": null,
+        "vlgcd11": null,
+        "Remarks": null
+      },
+      "geometry": {
+        "x": 78.48272099968915,
+        "y": 17.39773500044329
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4,
+        "Sl_No": 35,
+        "State": null,
+        "Constituency": null,
+        "District": "Hyderabad",
+        "Mandal": "Himayatnagar",
+        "Muncipality": null,
+        "GHMC_HUA_Non_Metro": null,
+        "Facility_Name": "CD New MLA Quarters",
+        "Facility_Type": "Civil Dispensary",
+        "NIN_ID": null,
+        "Latitude": 17.404211,
+        "Longitude": 78.474297,
+        "Address": null,
+        "Pincode": null,
+        "District_1": "Hyderabad",
+        "Mandal_1": null,
+        "Village": "Himayatnagar",
+        "Parliament": "SECUNDERABAD",
+        "Assembly": "Musheerabad,Amberpet,Khairatabad",
+        "Class": "Municipal Corporation",
+        "ULB": "GHMC",
+        "ULB_Mandal": "GHMC Municipal Corporation",
+        "Mandal2": null,
+        "District2": "HYDERABAD",
+        "Services": null,
+        "Department": "TVVP",
+        "HoD": "TVVP",
+        "Vehicle_Number": null,
+        "Base_Location": null,
+        "Segment": null,
+        "Vehicle_contact_Num": null,
+        "Area": null,
+        "Category": null,
+        "DMV_Code": null,
+        "vlgcd11": null,
+        "Remarks": null
+      },
+      "geometry": {
+        "x": 78.47429699994522,
+        "y": 17.40421100028733
+      }
+    }
+  ]
+}
