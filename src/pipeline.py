@@ -1,165 +1,140 @@
-"""Collect and prepare Telangana public health facility records."""
+"""Prepare the All India Health Centres Directory for access analysis."""
 
 from __future__ import annotations
 
-import csv
 import json
 import re
-import ssl
-import urllib.parse
-import urllib.request
 from collections import Counter
-from datetime import datetime, timezone
 from pathlib import Path
 
-import certifi
+import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
-RAW_DIR = ROOT / "data" / "raw"
-PROCESSED_DIR = ROOT / "data" / "processed"
-SERVICE = (
-    "https://tgrac.telangana.gov.in/arcgis/rest/services/"
-    "GovtHospitals_Folder/Health_Facilities_Mapping/MapServer"
-)
-LAYERS = {
-    7: "Central Medical Stores",
-    8: "Medical Colleges",
-    9: "District Hospital",
-    10: "Area Hospital",
-    11: "Civil Dispensary",
-    12: "Maternity Community Health Centre",
-    13: "Basti Dawakhana",
-    14: "Urban Community Health Centre",
-    15: "Urban Primary Health Centre",
-    16: "Community Health Centre",
-    17: "Primary Health Centre",
-    18: "Health Sub Centre",
-}
+RAW = ROOT / "data/raw/geocode_health_centre.csv"
+OUTPUT = ROOT / "data/processed/india_health_facilities.csv"
+SUMMARY = ROOT / "data/processed/quality_summary.json"
+
 FIELDS = [
     "facility_id",
-    "facility_name",
-    "facility_type",
+    "state",
     "district",
-    "mandal",
-    "village",
+    "subdistrict",
+    "facility_type",
+    "facility_name",
+    "facility_address",
     "latitude",
     "longitude",
-    "department",
-    "source_layer",
+    "active_flag",
+    "notional_physical",
+    "location_type",
+    "ownership_type",
+    "nin",
     "record_completeness_pct",
 ]
 
 
-def clean_text(value: object) -> str:
-    """Return a stable single spaced string for a source value."""
-    if value is None:
-        return ""
-    return re.sub(r"\s+", " ", str(value)).strip()
+def clean_text(value: object, fallback: str = "Unknown") -> str:
+    if value is None or pd.isna(value):
+        return fallback
+    cleaned = re.sub(r"\s+", " ", str(value)).strip(" ,")
+    if not cleaned or cleaned.casefold() in {"na", "n/a", "nan", "null", "none"}:
+        return fallback
+    return cleaned
 
 
-def normalise_district(value: object) -> str:
-    text = clean_text(value).replace("_", " ").title()
-    replacements = {"Medchal Malkajgiri": "Medchal–Malkajgiri", "Rangareddy": "Ranga Reddy"}
-    return replacements.get(text, text or "Unknown")
+def clean_coordinate(value: object, minimum: float, maximum: float) -> float | None:
+    try:
+        coordinate = float(value)
+    except (TypeError, ValueError):
+        return None
+    return round(coordinate, 6) if minimum <= coordinate <= maximum else None
 
 
-def fetch_layer(layer_id: int) -> dict:
-    query = urllib.parse.urlencode(
-        {"where": "1=1", "outFields": "*", "returnGeometry": "true", "f": "json"}
-    )
-    request = urllib.request.Request(
-        f"{SERVICE}/{layer_id}/query?{query}", headers={"User-Agent": "HarikaDataProject/1.0"}
-    )
-    context = ssl.create_default_context(cafile=certifi.where())
-    with urllib.request.urlopen(request, timeout=60, context=context) as response:  # noqa: S310
-        return json.load(response)
-
-
-def transform_feature(feature: dict, layer_id: int, layer_name: str) -> dict:
-    attributes = feature.get("attributes", {})
-    geometry = feature.get("geometry", {})
-    latitude = attributes.get("Latitude") or geometry.get("y")
-    longitude = attributes.get("Longitude") or geometry.get("x")
-    row = {
-        "facility_id": f"TG-{layer_id}-{attributes.get('OBJECTID', '')}",
-        "facility_name": clean_text(attributes.get("Facility_Name")) or "Unnamed facility",
-        "facility_type": clean_text(attributes.get("Facility_Type")) or layer_name,
-        "district": normalise_district(attributes.get("District") or attributes.get("District_1")),
-        "mandal": clean_text(attributes.get("Mandal") or attributes.get("Mandal_1")),
-        "village": clean_text(attributes.get("Village")),
-        "latitude": round(float(latitude), 6) if latitude not in (None, "") else "",
-        "longitude": round(float(longitude), 6) if longitude not in (None, "") else "",
-        "department": clean_text(attributes.get("Department")),
-        "source_layer": layer_name,
+def normalise_facility_type(value: object) -> str:
+    raw = clean_text(value).casefold()
+    aliases = {
+        "sc": "Sub Centre",
+        "sub_cen": "Sub Centre",
+        "sub centre": "Sub Centre",
+        "sub-center": "Sub Centre",
+        "phc": "Primary Health Centre",
+        "chc": "Community Health Centre",
+        "dh": "District Hospital",
+        "dis_h": "District Hospital",
+        "s_t_h": "Sub-District Hospital",
     }
-    assessed = ["facility_name", "facility_type", "district", "mandal", "latitude", "longitude"]
-    completed = sum(bool(row[field]) and row[field] != "Unknown" for field in assessed)
-    row["record_completeness_pct"] = round(100 * completed / len(assessed), 1)
-    return row
+    return aliases.get(raw, raw.title() if raw != "unknown" else "Unknown")
+
+
+def transform_row(row: dict, index: int) -> dict:
+    prepared = {
+        "facility_id": f"IN-HF-{index:06d}",
+        "state": clean_text(row.get("State Name")).replace("Andhra Pradesh Old", "Andhra Pradesh"),
+        "district": clean_text(row.get("District Name")),
+        "subdistrict": clean_text(row.get("Subdistrict Name")),
+        "facility_type": normalise_facility_type(row.get("Facility Type")),
+        "facility_name": clean_text(row.get("Facility Name"), "Unnamed facility"),
+        "facility_address": clean_text(row.get("Facility Address")),
+        "latitude": clean_coordinate(row.get("Latitude"), 6.0, 38.0),
+        "longitude": clean_coordinate(row.get("Longitude"), 68.0, 98.0),
+        "active_flag": clean_text(row.get("ActiveFlag_C")),
+        "notional_physical": clean_text(row.get("NOTIONAL_PHYSICAL")),
+        "location_type": clean_text(row.get("Location Type")),
+        "ownership_type": clean_text(row.get("Type Of Facility")),
+        "nin": clean_text(row.get("Nin_N")),
+    }
+    assessed = ["state", "district", "subdistrict", "facility_type", "facility_name", "latitude", "longitude", "ownership_type"]
+    completed = sum(prepared[field] not in {None, "Unknown", "Unnamed facility"} for field in assessed)
+    prepared["record_completeness_pct"] = round(100 * completed / len(assessed), 1)
+    return prepared
 
 
 def deduplicate(rows: list[dict]) -> tuple[list[dict], int]:
     seen: set[tuple] = set()
-    clean_rows: list[dict] = []
+    clean: list[dict] = []
     for row in rows:
         key = (
-            row["facility_name"].casefold(),
+            row["state"].casefold(),
             row["district"].casefold(),
+            row["facility_name"].casefold(),
+            row["facility_type"].casefold(),
             row["latitude"],
             row["longitude"],
         )
         if key in seen:
             continue
         seen.add(key)
-        clean_rows.append(row)
-    return clean_rows, len(rows) - len(clean_rows)
+        clean.append(row)
+    return clean, len(rows) - len(clean)
 
 
 def build_outputs() -> dict:
-    RAW_DIR.mkdir(parents=True, exist_ok=True)
-    PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
-    rows: list[dict] = []
-    layer_counts: dict[str, int] = {}
-    for layer_id, layer_name in LAYERS.items():
-        payload = fetch_layer(layer_id)
-        (RAW_DIR / f"layer_{layer_id}.json").write_text(
-            json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8"
-        )
-        features = payload.get("features", [])
-        layer_counts[layer_name] = len(features)
-        rows.extend(transform_feature(item, layer_id, layer_name) for item in features)
-
-    clean_rows, duplicate_count = deduplicate(rows)
-    clean_rows.sort(key=lambda item: (item["district"], item["facility_type"], item["facility_name"]))
-    with (PROCESSED_DIR / "telangana_health_facilities.csv").open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=FIELDS)
-        writer.writeheader()
-        writer.writerows(clean_rows)
-
-    districts = Counter(row["district"] for row in clean_rows if row["district"] != "Unknown")
-    mapped = sum(row["latitude"] != "" and row["longitude"] != "" for row in clean_rows)
-    complete = sum(row["record_completeness_pct"] >= 83.3 for row in clean_rows)
+    source = pd.read_csv(RAW, low_memory=False)
+    rows = [transform_row(record, index) for index, record in enumerate(source.to_dict("records"), 1)]
+    clean, duplicates = deduplicate(rows)
+    frame = pd.DataFrame(clean, columns=FIELDS).sort_values(
+        ["state", "district", "facility_type", "facility_name"]
+    )
+    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    frame.to_csv(OUTPUT, index=False)
+    mapped = int(frame["latitude"].notna().mul(frame["longitude"].notna()).sum())
+    public = int(frame["ownership_type"].str.contains("public", case=False, na=False).sum())
     summary = {
-        "raw_records": len(rows),
-        "clean_records": len(clean_rows),
-        "duplicates_removed": duplicate_count,
-        "districts": len(districts),
+        "raw_records": int(len(source)),
+        "clean_records": int(len(frame)),
+        "duplicates_removed": int(duplicates),
+        "states_and_union_territories": int(frame["state"].nunique()),
+        "districts": int(frame[["state", "district"]].drop_duplicates().shape[0]),
         "mapped_records": mapped,
-        "mapped_records_pct": round(100 * mapped / len(clean_rows), 1) if clean_rows else 0,
-        "records_at_least_83_pct_complete": complete,
-        "top_districts": districts.most_common(8),
-        "facility_types": Counter(row["facility_type"] for row in clean_rows).most_common(),
-        "source_layer_counts": layer_counts,
+        "mapped_records_pct": round(100 * mapped / len(frame), 1),
+        "public_records": public,
+        "public_records_pct": round(100 * public / len(frame), 1),
+        "average_completeness_pct": round(float(frame["record_completeness_pct"].mean()), 1),
+        "top_states": Counter(frame["state"]).most_common(10),
+        "facility_types": Counter(frame["facility_type"]).most_common(),
+        "location_types": Counter(frame["location_type"]).most_common(),
     }
-    (PROCESSED_DIR / "quality_summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
-    manifest = {
-        "source": SERVICE,
-        "publisher": "Telangana Remote Sensing Applications Centre",
-        "retrieved_utc": datetime.now(timezone.utc).isoformat(),
-        "layer_ids": list(LAYERS),
-        "license_note": "Use is subject to the publisher's terms and source availability.",
-    }
-    (RAW_DIR / "source_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    SUMMARY.write_text(json.dumps(summary, indent=2), encoding="utf-8")
     return summary
 
 

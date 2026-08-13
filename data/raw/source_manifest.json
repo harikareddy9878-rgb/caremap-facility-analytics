@@ -1,20 +1,8 @@
 {
-  "source": "https://tgrac.telangana.gov.in/arcgis/rest/services/GovtHospitals_Folder/Health_Facilities_Mapping/MapServer",
-  "publisher": "Telangana Remote Sensing Applications Centre",
-  "retrieved_utc": "2026-08-13T20:36:31.931886+00:00",
-  "layer_ids": [
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18
-  ],
-  "license_note": "Use is subject to the publisher's terms and source availability."
+  "source": "https://www.kaggle.com/datasets/akshatuppal/all-india-health-centres-directory",
+  "upstream": "Open Government Data Platform India",
+  "license": "CC0 as stated on the Kaggle dataset page",
+  "snapshot_note": "Directory described as at 7 October 2016; not a live operating-status feed.",
+  "raw_rows": 200438,
+  "file": "geocode_health_centre.csv"
 }

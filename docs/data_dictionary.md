@@ -2,15 +2,18 @@
 
 | Field | Meaning |
 | --- | --- |
-| `facility_id` | Project identifier formed from source layer and object identifier |
+| `facility_id` | Stable project identifier assigned during preparation |
+| `state` | Published state or union territory name |
+| `district` | Published district name |
+| `subdistrict` | Published subdistrict name |
+| `facility_type` | Standardised facility category |
 | `facility_name` | Published facility name |
-| `facility_type` | Published or layer derived category |
-| `district` | Standardised district name |
-| `mandal` | Published mandal field when available |
-| `village` | Published locality field when available |
-| `latitude` | Published latitude or map geometry latitude |
-| `longitude` | Published longitude or map geometry longitude |
-| `department` | Published administrative department when available |
-| `source_layer` | Map layer used to retrieve the record |
-| `record_completeness_pct` | Completeness across six analysis fields |
-
+| `facility_address` | Published address text |
+| `latitude` | Valid latitude retained within the India bounding range |
+| `longitude` | Valid longitude retained within the India bounding range |
+| `active_flag` | Activity flag supplied by the directory |
+| `notional_physical` | Directory classification for notional or physical facility |
+| `location_type` | Published rural or urban classification when available |
+| `ownership_type` | Published public or other facility type |
+| `nin` | Published National Identification Number when available |
+| `record_completeness_pct` | Completeness across eight fields needed for geographic analysis |

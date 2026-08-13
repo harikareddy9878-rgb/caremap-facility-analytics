@@ -1,5 +1,7 @@
 Total Facilities = COUNTROWS('Facilities')
 
+State Count = DISTINCTCOUNT('Facilities'[state])
+
 District Count = DISTINCTCOUNT('Facilities'[district])
 
 Mapped Facilities =
@@ -13,3 +15,10 @@ Mapped Percentage = DIVIDE([Mapped Facilities], [Total Facilities], 0)
 
 Average Completeness = AVERAGE('Facilities'[record_completeness_pct])
 
+Public Facilities =
+CALCULATE(
+    [Total Facilities],
+    CONTAINSSTRING(LOWER('Facilities'[ownership_type]), "public")
+)
+
+Public Facility Percentage = DIVIDE([Public Facilities], [Total Facilities], 0)

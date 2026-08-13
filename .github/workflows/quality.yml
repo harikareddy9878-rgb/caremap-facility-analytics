@@ -13,6 +13,8 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -r requirements.txt
+      - run: python scripts/acquire_data.py
+      - run: python src/pipeline.py
+      - run: python src/dashboard.py
       - run: pytest
       - run: ruff check src scripts tests
-

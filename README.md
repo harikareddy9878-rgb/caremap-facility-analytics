@@ -1,36 +1,58 @@
-# Telangana Public Health Facility Analytics
+# India Public Health Facility Access Analytics
 
-This project turns an official Telangana government health facility map service into a clean analytical dataset and a decision focused dashboard. It examines where public facilities are recorded, which facility types dominate, and where incomplete location fields could weaken planning analysis.
+This project turns the All India Health Centres Directory into a clean facility-level analytical table and a four-page Power BI implementation plan. It focuses on facility distribution, geographic coverage, ownership labels, rural and urban mix, and source quality.
 
-![Dashboard overview](evidence/facility_dashboard.png)
+![India health facility dashboard](evidence/facility_dashboard.png)
 
-## Problem
+## Project question
 
-Facility records are published across separate map layers. That format is useful for geographic display, but it is not ready for routine analysis. A planner must first combine the layers, standardise district and facility names, remove duplicates, and measure missing values.
+How can a large historical government facility directory be prepared for national and state comparison without presenting directory counts as live healthcare capacity?
 
-## Root cause addressed
+## Result
 
-The raw source separates each facility category into its own endpoint and contains inconsistent null values. Without a repeatable preparation step, totals can differ between analyses and data quality problems stay hidden.
+| Measure | Result |
+| --- | ---: |
+| Raw directory records | 200,438 |
+| Clean facility records | 193,783 |
+| Exact duplicate signatures removed | 6,655 |
+| States and union territories | 36 |
+| State and district combinations | 688 |
+| Valid coordinates | 99.7% |
+| Records labelled public | 100.0% |
 
-## Purpose
+The pipeline standardises five facility types, validates coordinates against an India bounding range, normalises nulls, merges an outdated Andhra Pradesh label, removes exact signatures, and publishes an auditable quality summary.
 
-The project creates one reproducible facility table, a compact KPI dashboard, reusable Power BI measures, and a written analysis report. It is an educational analysis of published records and is not a measure of clinical quality or live capacity.
+## Data source
 
-## Results
+The acquisition script downloads the [All India Health Centres Directory](https://www.kaggle.com/datasets/akshatuppal/all-india-health-centres-directory), described as an ensemble of data collected from data.gov.in. The Kaggle page states CC0 and dates the directory to 7 October 2016.
 
-The pipeline records the source layer for every row, preserves the raw API responses, removes exact duplicate facilities, and publishes a quality summary. The dashboard shows total facilities, district coverage, mapped coordinates, facility type mix, district concentration, and completeness.
+That date is essential. The dataset is useful for demonstrating preparation and geographic analysis, but it is not a live source of current facilities, staffing, beds, operating hours, or services.
+
+## Dashboard design
+
+The included Power BI guide defines four pages:
+
+1. National overview with scale, coverage, facility type, and state mix
+2. Geographic access explorer with state, district, and facility filters
+3. State comparison matrix with coverage and quality measures
+4. Data quality page with duplicates, missing fields, and coordinate checks
+
+Reusable DAX measures are included in `dashboards/measures.dax`.
 
 ## Repository guide
 
-| Folder | Contents |
+| Path | Contents |
 | --- | --- |
-| `data/raw` | Source responses from the Telangana government ArcGIS service |
-| `data/processed` | Clean facility table and quality summary |
-| `src` | Collection, cleaning, validation, and dashboard code |
-| `dashboards` | Power BI model notes and DAX measures |
-| `evidence` | Generated dashboard image |
-| `reports` | Detailed project report in PDF format |
-| `tests` | Data transformation checks |
+| `scripts/acquire_data.py` | Reproducible download and source manifest |
+| `src/pipeline.py` | Cleaning, normalisation, coordinate validation, and deduplication |
+| `src/dashboard.py` | Power BI-style visual evidence generated from the clean table |
+| `dashboards` | DAX measures and four-page Power BI build guide |
+| `data/processed` | Clean national facility table and quality summary |
+| `docs/data_dictionary.md` | Field definitions and analytical meaning |
+| `reports` | Detailed PDF project report |
+| `tests` | Transformation and data-quality rule checks |
+
+[Read the ten page project report](reports/India_Public_Health_Facility_Access_Analytics_Report.pdf)
 
 ## Reproduce
 
@@ -38,6 +60,7 @@ The pipeline records the source layer for every row, preserves the raw API respo
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+python scripts/acquire_data.py
 python src/pipeline.py
 python src/dashboard.py
 python scripts/build_report.py
@@ -45,9 +68,10 @@ pytest
 ruff check src scripts tests
 ```
 
-The source is the [Telangana Remote Sensing Applications Centre Health Facilities Mapping service](https://tgrac.telangana.gov.in/arcgis/rest/services/GovtHospitals_Folder/Health_Facilities_Mapping/MapServer). The extraction date is stored in `data/raw/source_manifest.json`.
+## Interpretation boundary
+
+Counts describe a historical directory snapshot. They do not measure patient access, need, emergency readiness, clinical outcomes, bed capacity, medicine availability, or quality. Population denominators and current facility validation would be required before operational use.
 
 ## Author
 
 Harika
-

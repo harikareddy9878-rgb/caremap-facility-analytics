@@ -1,107 +1,90 @@
 {
-  "raw_records": 2648,
-  "clean_records": 2628,
-  "duplicates_removed": 20,
-  "districts": 33,
-  "mapped_records": 2628,
-  "mapped_records_pct": 100.0,
-  "records_at_least_83_pct_complete": 2595,
-  "top_districts": [
+  "raw_records": 200438,
+  "clean_records": 193783,
+  "duplicates_removed": 6655,
+  "states_and_union_territories": 36,
+  "districts": 688,
+  "mapped_records": 193151,
+  "mapped_records_pct": 99.7,
+  "public_records": 193781,
+  "public_records_pct": 100.0,
+  "average_completeness_pct": 99.9,
+  "top_states": [
     [
-      "Hyderabad",
-      275
+      "Uttar Pradesh",
+      24129
     ],
     [
-      "Bhadradri Kothagudem",
-      246
+      "Rajasthan",
+      16465
     ],
     [
-      "Medchal\u2013Malkajgiri",
-      185
+      "Maharashtra",
+      13680
     ],
     [
-      "Kamareddy",
-      179
+      "Madhya Pradesh",
+      12938
     ],
     [
-      "Jagtial",
-      168
+      "Andhra Pradesh",
+      12698
     ],
     [
-      "Ranga Reddy",
-      155
+      "Karnataka",
+      12192
     ],
     [
-      "Adilabad",
-      146
+      "West Bengal",
+      11698
     ],
     [
-      "Jangoan",
-      119
+      "Tamil Nadu",
+      11287
+    ],
+    [
+      "Gujarat",
+      10571
+    ],
+    [
+      "Bihar",
+      10526
     ]
   ],
   "facility_types": [
     [
       "Sub Centre",
-      983
+      157437
     ],
     [
       "Primary Health Centre",
-      642
-    ],
-    [
-      "Basti Dawakhana",
-      462
-    ],
-    [
-      "Urban Primary Health Centre",
-      289
+      28833
     ],
     [
       "Community Health Centre",
-      85
+      5345
     ],
     [
-      "Area Hospital",
-      73
-    ],
-    [
-      "Teaching Hospital",
-      47
-    ],
-    [
-      "Central Medical Stores",
-      33
-    ],
-    [
-      "Urban Community Health Centre",
-      7
-    ],
-    [
-      "Civil Dispensary",
-      4
+      "Sub-District Hospital",
+      1238
     ],
     [
       "District Hospital",
-      2
-    ],
-    [
-      "Maternity Community Health Centre",
-      1
+      930
     ]
   ],
-  "source_layer_counts": {
-    "Central Medical Stores": 33,
-    "Medical Colleges": 47,
-    "District Hospital": 2,
-    "Area Hospital": 73,
-    "Civil Dispensary": 4,
-    "Maternity Community Health Centre": 1,
-    "Basti Dawakhana": 462,
-    "Urban Community Health Centre": 7,
-    "Urban Primary Health Centre": 292,
-    "Community Health Centre": 85,
-    "Primary Health Centre": 642,
-    "Health Sub Centre": 1000
-  }
+  "location_types": [
+    [
+      "Rural",
+      185361
+    ],
+    [
+      "Urban",
+      8420
+    ],
+    [
+      "Public",
+      2
+    ]
+  ]
 }
