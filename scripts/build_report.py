@@ -1,4 +1,4 @@
-"""Build a ten page report for India public health facility access analytics."""
+"""Build the ten-page CareMap analytics report."""
 
 from __future__ import annotations
 
@@ -13,7 +13,7 @@ from reportlab.lib.units import cm
 from reportlab.platypus import Image, PageBreak, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / "reports/India_Public_Health_Facility_Access_Analytics_Report.pdf"
+OUTPUT = ROOT / "reports/CareMap_Facility_Analytics_Report.pdf"
 GREEN = colors.HexColor("#143d35")
 TEAL = colors.HexColor("#087f5b")
 PALE = colors.HexColor("#eef5f2")
@@ -23,7 +23,7 @@ def footer(canvas, document):
     canvas.saveState()
     canvas.setFillColor(colors.HexColor("#60706a"))
     canvas.setFont("Helvetica", 8)
-    canvas.drawString(2 * cm, 1.1 * cm, "India Public Health Facility Access Analytics")
+    canvas.drawString(2 * cm, 1.1 * cm, "CareMap Facility Analytics")
     canvas.drawRightString(19 * cm, 1.1 * cm, f"Page {document.page}")
     canvas.restoreState()
 
@@ -36,10 +36,10 @@ def build_report() -> Path:
     styles.add(ParagraphStyle(name="Section", parent=styles["Heading1"], fontSize=19, leading=24, textColor=GREEN, spaceAfter=13))
     styles.add(ParagraphStyle(name="Sub", parent=styles["Heading2"], fontSize=12, leading=16, textColor=TEAL, spaceBefore=8, spaceAfter=5))
     styles.add(ParagraphStyle(name="BodyR", parent=styles["BodyText"], fontSize=10, leading=15, textColor=colors.HexColor("#303c38"), spaceAfter=9))
-    doc = SimpleDocTemplate(str(OUTPUT), pagesize=A4, leftMargin=2 * cm, rightMargin=2 * cm, topMargin=1.8 * cm, bottomMargin=1.8 * cm, title="India Public Health Facility Access Analytics", author="Harika")
+    doc = SimpleDocTemplate(str(OUTPUT), pagesize=A4, leftMargin=2 * cm, rightMargin=2 * cm, topMargin=1.8 * cm, bottomMargin=1.8 * cm, title="CareMap Facility Analytics", author="Harika")
     story = []
     table_style = TableStyle([("BACKGROUND", (0, 0), (-1, 0), GREEN), ("TEXTCOLOR", (0, 0), (-1, 0), colors.white), ("GRID", (0, 0), (-1, -1), 0.4, colors.HexColor("#cad8d3")), ("VALIGN", (0, 0), (-1, -1), "TOP"), ("PADDING", (0, 0), (-1, -1), 7)])
-    story.extend([Spacer(1, 3.0 * cm), Paragraph("India Public Health Facility<br/>Access Analytics", styles["CoverTitle"]), Paragraph("From a historical national directory to a governed Power BI model", ParagraphStyle(name="CoverSub", parent=styles["BodyR"], fontSize=14, leading=20, textColor=TEAL, alignment=TA_CENTER)), Spacer(1, 1.2 * cm), Table([["Project type", "Data analytics and Power BI preparation"], ["Raw records", f"{summary['raw_records']:,}"], ["Geography", "36 states and union territories"], ["Prepared by", "Harika"]], colWidths=[4 * cm, 9 * cm], style=TableStyle([("BACKGROUND", (0, 0), (0, -1), PALE), ("FONTNAME", (0, 0), (0, -1), "Helvetica-Bold"), ("GRID", (0, 0), (-1, -1), 0.4, colors.HexColor("#cad8d3")), ("PADDING", (0, 0), (-1, -1), 9)])), PageBreak()])
+    story.extend([Spacer(1, 3.0 * cm), Paragraph("CareMap<br/>Facility Analytics", styles["CoverTitle"]), Paragraph("From a historical national directory to a governed Power BI model", ParagraphStyle(name="CoverSub", parent=styles["BodyR"], fontSize=14, leading=20, textColor=TEAL, alignment=TA_CENTER)), Spacer(1, 1.2 * cm), Table([["Project type", "Data analytics and Power BI preparation"], ["Raw records", f"{summary['raw_records']:,}"], ["Geography", "36 states and union territories"], ["Prepared by", "Harika"]], colWidths=[4 * cm, 9 * cm], style=TableStyle([("BACKGROUND", (0, 0), (0, -1), PALE), ("FONTNAME", (0, 0), (0, -1), "Helvetica-Bold"), ("GRID", (0, 0), (-1, -1), 0.4, colors.HexColor("#cad8d3")), ("PADDING", (0, 0), (-1, -1), 9)])), PageBreak()])
 
     sections = [
         ("1. Executive summary", [f"The pipeline prepares {summary['raw_records']:,} health-centre directory rows and publishes {summary['clean_records']:,} clean facility records after removing {summary['duplicates_removed']:,} exact duplicate signatures.", f"The result covers {summary['states_and_union_territories']} state and union territory labels, {summary['districts']} state-district combinations, and {summary['mapped_records_pct']}% valid coordinates.", "The project produces a governed table, quality summary, DAX measures, a four-page Power BI build guide, visual evidence, tests, and this report."]),

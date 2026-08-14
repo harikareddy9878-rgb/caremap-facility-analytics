@@ -1,4 +1,4 @@
-# India Public Health Facility Access Analytics
+# CareMap Facility Analytics
 
 This project turns the All India Health Centres Directory into a clean facility-level analytical table and a four-page Power BI implementation plan. It focuses on facility distribution, geographic coverage, ownership labels, rural and urban mix, and source quality.
 
@@ -52,7 +52,7 @@ Reusable DAX measures are included in `dashboards/measures.dax`.
 | `reports` | Detailed PDF project report |
 | `tests` | Transformation and data-quality rule checks |
 
-[Read the ten page project report](reports/India_Public_Health_Facility_Access_Analytics_Report.pdf)
+[Read the ten-page project report](reports/CareMap_Facility_Analytics_Report.pdf)
 
 ## Reproduce
 
