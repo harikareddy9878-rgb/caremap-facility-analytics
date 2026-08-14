@@ -6,7 +6,7 @@ from pathlib import Path
 from report_template import build_research_report
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / "reports/CareMap_Facility_Analytics_Report.pdf"
+OUTPUT = ROOT / "reports/CareMap_Report.pdf"
 FIGURES = ROOT / "reports/figures"
 
 
@@ -40,6 +40,48 @@ def build_report() -> Path:
             "paragraphs": [
                 "The clean table preserves facility name, type, ownership, location type, state, district, subdistrict, address, coordinates, activity fields, and record completeness. Reusable DAX measures calculate facility count, geography coverage, mapped percentage, public-label percentage, and average completeness.",
                 "The four Power BI pages cover national overview, geographic exploration, state comparison, and data quality. Counts are always described as directory records rather than current capacity.",
+            ],
+        },
+        {
+            "title": "End-to-end analytical architecture",
+            "paragraphs": [
+                "The architecture separates source preservation, transformation, governed output, decision modelling and verification. The acquisition stage records source provenance before Python and pandas standardise categories, validate coordinates and calculate duplicate signatures.",
+                "The clean facility table is the only aggregation input used by the DAX measures and Power BI page design. Pytest and generated evidence figures verify the transformation rules independently from the dashboard. This separation prevents a visual page from silently applying a second cleaning rule.",
+            ],
+            "figure": FIGURES / "06_architecture.png",
+            "caption": "Architecture diagram. Technology and responsibility across the CareMap data flow.",
+            "explanation": [
+                ["Stage design", "Each box has one primary input, technology and output so the source, pipeline and dashboard responsibilities remain distinct."],
+                ["Control point", "The governed facility table is created before DAX or visual aggregation, which keeps record counts consistent across pages."],
+                ["Result", "The same 193,783-row table supports the quality summary, analytical figures and Power BI implementation plan."],
+            ],
+        },
+        {
+            "title": "Automated pipeline test execution",
+            "paragraphs": [
+                "I executed the repository test suite after the report and filename changes. Four tests passed. The suite checks required columns, coordinate validation, duplicate removal and standardised facility categories.",
+                "These tests do not prove that every historical source value is correct. They verify that the declared preparation rules behave consistently and that invalid or repeated records follow the documented path.",
+            ],
+            "figure": FIGURES / "07_test_execution.png",
+            "caption": "Test execution evidence. Actual CareMap pytest result captured for this report revision.",
+            "explanation": [
+                ["Execution", "The command completed with four passing tests and no failed test."],
+                ["Coverage", "The checks focus on transformation rules that directly affect counts, maps and category comparisons."],
+                ["Boundary", "Source freshness and independent geographic verification remain outside automated unit-test coverage."],
+            ],
+        },
+        {
+            "title": "Dashboard evidence and decision use",
+            "paragraphs": [
+                "The dashboard evidence brings the governed totals, facility mix, geography and data-quality indicators into one decision view. It is included to show how the prepared table is consumed, not to replace the reproducible DAX and build guide.",
+                "A user can start from the national count, filter to a state or facility type, and keep mapped percentage and completeness visible while interpreting the result. This reduces the risk of treating a large record count as a complete measure of current healthcare access.",
+            ],
+            "figure": ROOT / "evidence/facility_dashboard.png",
+            "caption": "Dashboard evidence. CareMap analytical view generated from the clean facility table.",
+            "explanation": [
+                ["Question", "Can the dashboard expose scale, composition and data quality at the same time?"],
+                ["Observed view", "The evidence combines governed KPIs with facility and geographic breakdowns rather than presenting one unsupported total."],
+                ["Use", "The page supports exploratory comparison while the report retains the source-date and interpretation limitations."],
             ],
         },
         {

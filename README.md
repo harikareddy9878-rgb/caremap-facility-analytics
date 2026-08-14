@@ -52,9 +52,9 @@ Reusable DAX measures are included in `dashboards/measures.dax`.
 | `reports` | Detailed PDF project report |
 | `tests` | Transformation and data-quality rule checks |
 
-[Read the research-style project report](reports/CareMap_Facility_Analytics_Report.pdf)
+[Read the project report](reports/CareMap_Report.pdf)
 
-The report is a plain research-style document with an abstract, preparation method, five explained data-quality and analytical figures, limitations, reproducibility notes, and conclusion.
+The report documents how 200,438 source records were checked, deduplicated, mapped and evaluated before the analytical model was prepared.
 
 ## Reproduce
 
